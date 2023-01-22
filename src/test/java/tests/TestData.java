@@ -3,9 +3,8 @@ package tests;
 import com.github.javafaker.Faker;
 
 import java.io.File;
-import java.util.*;
-
-import static tests.TestData1.*;
+import java.util.Locale;
+import java.util.Random;
 
 public class TestData {
     Faker faker = new Faker(new Locale("fr"));
@@ -23,9 +22,8 @@ public class TestData {
             hobby = getHobby(),
             pictureName = getPictureName(),
             address = faker.address().fullAddress(),
-            stateAndCity = printRandomMapKeyValueElement(),
-            state = getState(),
-            city = getCity();
+            state = "Haryana",
+            city = "Karnal";
     File picture = new File(pictureName);
 
     public String getSex() {
@@ -58,15 +56,5 @@ public class TestData {
         String[] pictureNames = {"src/test/resources/apple.jpg", "src/test/resources/orange.jpg", "src/test/resources/pear.jpg"};
         int index = random.nextInt(pictureNames.length);
         return pictureNames[index];
-    }
-
-    public String getCity() {
-        String cityPart =  stateAndCity.split("-")[0];
-        return cityPart;
-    }
-
-    public String getState() {
-        String statePart = stateAndCity.split("-")[1];
-        return statePart;
     }
 }
